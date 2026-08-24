@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad BonusCom — Directorio 10 Casillas 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Orbitron:wght@700&display=stylesheet" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #2b1d11;
+            color: #2c1810;
+            margin: 0;
+            padding: 4px;
+            display: flex;
+            justify-content: center;
+        }
+        .libro-container {
+            width: 100%;
+            max-width: 480px;
+            background: #f4ebd0;
+            border: 3px solid #4a2e18;
+            padding: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.7);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .header-guia {
+            text-align: center;
+            border-bottom: 2px dashed #4a2e18;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+        }
+        .header-guia h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.95rem;
+            margin: 0;
+            color: #2c1810;
+            letter-spacing: 0.5px;
+        }
+        .header-guia p {
+            font-size: 0.6rem;
+            margin: 2px 0 0 0;
+            color: #5c3a21;
+        }
+        .grilla-directorio {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+        .casilla {
+            background: #fdfbf7;
+            border: 2px solid #5c3a21;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.55rem;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            border-radius: 2px;
+        }
+        .casilla-titulo {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.55rem;
+            text-align: center;
+            border-bottom: 1px solid #5c3a21;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            color: #bc6c25;
+        }
+        .casilla-img-container {
+            width: 100%;
+            height: 80px;
+            background: #2b1d11; 
+            border: 1px solid #5c3a21;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .casilla-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .casilla-img-placeholder {
+            color: #f4ebd0;
+            font-size: 0.5rem;
+            text-align: center;
+        }
+        .casilla-datos {
+            margin-top: 3px;
+            line-height: 1.15;
+            word-break: break-word;
+        }
+        .btn-accion-mini {
+            background: #5c3a21;
+            color: #f4ebd0;
+            border: none;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.5rem;
+            padding: 4px;
+            cursor: pointer;
+            margin-top: 3px;
+            width: 100%;
+            border-radius: 2px;
+        }
+        .btn-accion-mini:hover {
+            background: #7c4e31;
+        }
+        input[type="text"] {
+            width: 100%;
+            font-size: 0.52rem;
+            padding: 3px;
+            margin-top: 2px;
+            box-sizing: border-box;
+            background: #fff;
+            border: 1px solid #5c3a21;
+            font-family: 'Courier Prime', monospace;
+        }
+        .modo-edicion {
+            display: none;
+            background: #f0e2c8;
+            padding: 3px;
+            border: 1px dashed #5c3a21;
+            margin-top: 2px;
+        }
+        .footer-guia {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.55rem;
+            border-top: 2px dashed #4a2e18;
+            padding-top: 5px;
+            color: #5c3a21;
+        }
+        #canvas-output { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="libro-container">
+        <div class="header-guia">
+            <h1>PUBLICIDAD BONUSCOM — 10 AVISOS</h1>
+            <p id="estado-conexion">Conectando a Realtime Database...</p>
+        </div>
+
+        <div class="grilla-directorio" id="grilla-completa">
+            
+            <!-- Generador Automático de las 10 Casillas con Línea de Tiempo y Sello MDP -->
+            <script>
+                for(let i = 0; i < 10; i++) {
+                    let numID = "BC-2026-X0" + (i + 1);
+                    if(i >= 9) numID = "BC-2026-X10";
+
+                    document.write(`
+                        <div class="casilla">
+                            <div class="casilla-titulo">Aviso N° ${i+1}</div>
+                            <div class="casilla-img-container" id="img-container-${i}">
+                                <span class="casilla-img-placeholder" id="lbl-ph-${i}">[ Subir Foto ]</span>
+                            </div>
+                            
+                            <!-- Vista Estática de Texto -->
+                            <div id="vista-txt-${i}" class="casilla-datos">
+                                <strong id="lbl-title-${i}">Campaña ${i+1}</strong><br>
+                                <span id="lbl-desc-${i}" style="color:#5c3a21;">Detalle del aviso...</span><br>
+                                <strong>ID:</strong> <span id="lbl-id-${i}">${numID}</span><br>
+                                <strong>Sello:</strong> VentaniYA! MDP<br>
+                                <span style="font-size:0.45rem; color:#7c4e31;" id="lbl-time-${i}">Actualizando...</span>
+                            </div>
+
+                            <!-- Panel Oculto para Modificar -->
+                            <div id="panel-edit-${i}" class="modo-edicion">
+                                <input type="text" id="fijo-title-${i}" value="Campaña ${i+1}" placeholder="Título...">
+                                <input type="text" id="fijo-desc-${i}" value="Detalle del aviso..." placeholder="Descripción...">
+                            </div>
+
+                            <input type="file" accept="image/*" style="font-size:0.4rem; margin-top:2px;" onchange="procesarYSubirImagen(event, ${i})">
+                            
+                            <button class="btn-accion-mini" id="btn-edit-${i}" style="background:#a68a67;" onclick="toggleEdicion(${i}, '${numID}')">✏️ Editar</button>
+                            <button class="btn-accion-mini" style="background:#bc6c25;" onclick="descargarAvisoHD(${i}, '${numID}')">💾 Descargar HD</button>
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+
+        <div class="footer-guia">
+            © 2026 BonusCom — VentaniYA! Mar del Plata — Tiempo Real Activo
+        </div>
+    </div>
+
+    <canvas id="canvas-output" width="800" height="600"></canvas>
+
+    <!-- Conexión Oficial a Firebase Realtime Database (Proyecto PublicidadBonusCom) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAWYFz7A6DLrEee5HS3Jho4lH-WJAFG9XQ",
+            authDomain: "publicidadbonuscom.firebaseapp.com",
+            projectId: "publicidadbonuscom",
+            storageBucket: "publicidadbonuscom.firebasestorage.app",
+            messagingSenderId: "1064348092275",
+            appId: "1:1064348092275:web:7c744fd2c67b8313412706",
+            measurementId: "G-N326SRVPQ2"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        
+        window.dbRef = ref;
+        window.dbSet = set;
+        window.dbGet = get;
+        window.dbChild = child;
+        window.database = database;
+
+        document.getElementById('estado-conexion').innerText = "BonusCom — Nube Realtime Sincronizada";
+        
+        // Cargar todo al iniciar y mantener sincronizado
+        cargarDatosRealtimeDB();
+        
+        // Actualizar datos periódicamente para reflejar tiempo real fluido
+        setInterval(cargarDatosRealtimeDB, 5000);
+    </script>
+
+    <script>
+        let imagenesCargadas = {};
+        let estadosEdicion = {};
+
+        async function guardarEnRealtimeDB(index) {
+            try {
+                const titulo = document.getElementById(`fijo-title-${index}`).value;
+                const desc = document.getElementById(`fijo-desc-${index}`).value;
+                const imgUrl = imagenesCargadas[index] || "";
+                const ahora = new Date().toLocaleString();
+
+                const casillaRef = window.dbRef(window.database, 'avisos/casilla_' + index);
+                await window.dbSet(casillaRef, {
+                    titulo: titulo,
+                    desc: desc,
+                    imagen: imgUrl,
+                    timestamp: ahora
+                });
+
+                document.getElementById(`lbl-time-${index}`).innerText = ahora;
+                console.log(`Aviso ${index} guardado en Firebase.`);
+            } catch (err) {
+                console.error("Error al guardar:", err);
+            }
+        }
+
+        async function cargarDatosRealtimeDB() {
+            try {
+                const dbRef = window.dbRef(window.database);
+                const snapshot = await window.dbGet(window.dbChild(dbRef, 'avisos'));
+                
+                if (snapshot.exists()) {
+                    const dataGlobal = snapshot.val();
+                    
+                    for(let i = 0; i < 10; i++) {
+                        const data = dataGlobal[`casilla_${i}`];
+                        if (!data) continue;
+
+                        if(!estadosEdicion[i]) {
+                            if(data.titulo) {
+                                document.getElementById(`fijo-title-${i}`).value = data.titulo;
+                                document.getElementById(`lbl-title-${i}`).innerText = data.titulo;
+                            }
+                            if(data.desc) {
+                                document.getElementById(`fijo-desc-${i}`).value = data.desc;
+                                document.getElementById(`lbl-desc-${i}`).innerText = data.desc;
+                            }
+                        }
+
+                        if(data.timestamp) {
+                            document.getElementById(`lbl-time-${i}`).innerText = "Sync: " + data.timestamp;
+                        }
+
+                        if(data.imagen) {
+                            imagenesCargadas[i] = data.imagen;
+                            const container = document.getElementById(`img-container-${i}`);
+                            container.innerHTML = '';
+                            const tagImg = document.createElement('img');
+                            tagImg.src = data.imagen;
+                            container.appendChild(tagImg);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Error cargando:", err);
+            }
+        }
+
+        function procesarYSubirImagen(event, index) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    const MAX_WIDTH = 600;
+                    const scaleSize = MAX_WIDTH / img.width;
+                    canvas.width = MAX_WIDTH;
+                    canvas.height = img.height * (scaleSize < 1 ? scaleSize : 1);
+
+                    if (scaleSize < 1) {
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    } else {
+                        ctx.drawImage(img, 0, 0);
+                    }
+
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                    imagenesCargadas[index] = dataUrl;
+
+                    const container = document.getElementById(`img-container-${index}`);
+                    container.innerHTML = '';
+                    const tagImg = document.createElement('img');
+                    tagImg.src = dataUrl;
+                    container.appendChild(tagImg);
+
+                    guardarEnRealtimeDB(index);
+                }
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function toggleEdicion(index, idReg) {
+            const panel = document.getElementById(`panel-edit-${index}`);
+            const vista = document.getElementById(`vista-txt-${index}`);
+            const btn = document.getElementById(`btn-edit-${index}`);
+            
+            let editando = estadosEdicion[index] || false;
+
+            if (!editando) {
+                panel.style.display = 'block';
+                vista.style.display = 'none';
+                btn.innerText = '💾 Guardar';
+                btn.style.background = '#bc6c25';
+                estadosEdicion[index] = true;
+            } else {
+                const nuevoTitulo = document.getElementById(`fijo-title-${index}`).value;
+                const nuevoDesc = document.getElementById(`fijo-desc-${index}`).value;
+
+                document.getElementById(`lbl-title-${index}`).innerText = nuevoTitulo;
+                document.getElementById(`lbl-desc-${index}`).innerText = nuevoDesc;
+
+                panel.style.display = 'none';
+                vista.style.display = 'block';
+                btn.innerText = '✏️ Editar';
+                btn.style.background = '#a68a67';
+                estadosEdicion[index] = false;
+
+                guardarEnRealtimeDB(index);
+            }
+        }
+
+        function descargarAvisoHD(index, idReg) {
+            const canvas = document.getElementById('canvas-output');
+            const ctx = canvas.getContext('2d');
+            const imgSrc = imagenesCargadas[index];
+            const titulo = document.getElementById(`fijo-title-${index}`).value || "Publicidad BonusCom";
+            const detalle = document.getElementById(`fijo-desc-${index}`).value || "Aviso Comercial";
+            const ahora = new Date().toLocaleString();
+            const hashUnico = 'HASH-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+
+            ctx.fillStyle = '#f4ebd0';
+            ctx.fillRect(0, 0, 800, 600);
+
+            ctx.strokeStyle = '#5c3a21';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(40, 40, 720, 520);
+
+            if (imgSrc) {
+                const imgPersonalizada = new Image();
+                imgPersonalizada.onload = function() {
+                    dibujarImagenContain(ctx, imgPersonalizada, 70, 70, 660, 290);
+                    terminarCanvasHD(ctx, titulo, detalle, idReg, hashUnico, ahora, canvas);
+                }
+                imgPersonalizada.src = imgSrc;
+            } else {
+                ctx.fillStyle = '#e3d2b0';
+                ctx.fillRect(70, 70, 660, 290);
+                terminarCanvasHD(ctx, titulo, detalle, idReg, hashUnico, ahora, canvas);
+            }
+        }
+
+        function terminarCanvasHD(ctx, titulo, detalle, idReg, hashUnico, ahora, canvas) {
+            ctx.fillStyle = '#2c1810';
+            ctx.font = 'bold 20px "Special Elite", cursive';
+            ctx.textAlign = 'center';
+            ctx.fillText(titulo.toUpperCase(), 400, 395);
+
+            ctx.font = 'italic 15px "Courier Prime", monospace';
+            ctx.fillText(detalle, 400, 425);
+
+            ctx.font = 'bold 13px "Courier Prime", monospace';
+            ctx.fillText(`ID: ${idReg} | ${hashUnico} | MAR DEL PLATA`, 400, 465);
+
+            ctx.font = '13px "Courier Prime", monospace';
+            ctx.fillText(`SELLO: VentaniYA! MDP — FECHA: ${ahora}`, 400, 495);
+
+            ctx.font = '11px "Special Elite", cursive';
+            ctx.fillStyle = '#7c4e31';
+            ctx.fillText("BonusCom — Publicidad Oficial", 400, 530);
+
+            const link = document.createElement('a');
+            link.download = `Aviso_${idReg}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function dibujarImagenContain(ctx, img, x, y, anchoMax, altoMax) {
+            const hRatio = anchoMax / img.width;
+            const vRatio = altoMax / img.height;
+            const ratio = Math.min(hRatio, vRatio);
+            const centroX = x + (anchoMax - img.width * ratio) / 2;
+            const centroY = y + (altoMax - img.height * ratio) / 2;
+            ctx.drawImage(img, 0, 0, img.width, img.height, centroX, centroY, img.width * ratio, img.height * ratio);
+        }
+    </script>
+</body>
+</html>
